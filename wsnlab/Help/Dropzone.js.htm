@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)http://www.dropzonejs.com/ -->
+<html class="no-ie wf-brandongrotesque-i3-active wf-brandongrotesque-i4-active wf-brandongrotesque-i7-active wf-brandongrotesque-n3-active wf-brandongrotesque-n4-active wf-brandongrotesque-n7-active wf-sourcecodepro-n4-active wf-sourcecodepro-n7-active wf-active"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- tiptheweb.org -->
+  <meta name="ttw" content="dt7xvsr">
+
+  <title>Dropzone.js</title>
+
+  <meta name="description" value="DropzoneJS is an open source library that provides beautiful and easy to use drag&#39;n&#39;drop file uploads with image previews.">
+  <meta name="keywords" value="javascript dragndrop drag and drop drag&#39;n&#39;drop file upload image preview coffeescript">
+
+  <link rel="stylesheet" href="http://www.dropzonejs.com/css/general.css?v=8">
+
+  <script src="./Dropzone.js_files/jquery.min.js"></script><script src="./Dropzone.js_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./Dropzone.js_files/plusone.js" gapi_processed="true"></script><script id="twitter-wjs" src="./Dropzone.js_files/widgets.js"></script><script id="facebook-jssdk" src="./Dropzone.js_files/all.js"></script><script type="text/javascript" async="" src="./Dropzone.js_files/load.js"></script><script src="./Dropzone.js_files/hpm5kxd.js" type="text/javascript" async=""></script><script type="text/javascript" async="" src="./Dropzone.js_files/ga.js"></script><script src="./Dropzone.js_files/build.js"></script>
+  <script>
+    require("boot");
+  </script>
+
+
+  <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34027655-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+
+  <script type="text/javascript">
+    // Font loading from typekit
+    (function() {
+      var config = {
+        kitId: 'hpm5kxd',
+        scriptTimeout: 3000
+      };
+      var h=document.getElementsByTagName("html")[0];h.className+=" wf-loading";var t=setTimeout(function(){h.className=h.className.replace(/(\s|^)wf-loading(\s|$)/g," ");h.className+=" wf-inactive"},config.scriptTimeout);var tk=document.createElement("script"),d=false;tk.src='//use.typekit.net/'+config.kitId+'.js';tk.type="text/javascript";tk.async="true";tk.onload=tk.onreadystatechange=function(){var a=this.readyState;if(d||a&&a!="complete"&&a!="loaded")return;d=true;clearTimeout(t);try{Typekit.load(config)}catch(b){}};var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(tk,s)
+    })();
+  </script>
+
+
+  <script type="text/javascript">
+    // Flattr
+    /* <![CDATA[ */
+    (function() {
+        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+        t.parentNode.insertBefore(s, t);
+    })();
+    /* ]]> */</script>
+
+<script src="./Dropzone.js_files/sf_main.jsp"></script><script src="./Dropzone.js_files/sf_main(1).jsp"></script><style type="text/css">body{font-family:"brandon-grotesque",helvetica,sans-serif;}code{font-family:"source-code-pro",monospace;}</style><link rel="stylesheet" href="http://use.typekit.net/c/0f2fb4/brandon-grotesque:i3:i4:i7:n3:n4:n7,source-code-pro:n4:n7.Y2k:J:2,Y2m:J:2,Y2r:J:2,Y2j:J:2,Y2l:J:2,Y2q:J:2,Y1M:J:2,Y1P:J:2/d?3bb2a6e53c9684ffdc9a9bf41f5b2a620f3e55bc4d928e35d4fde9da6dc56a7951692d919431a8117c758837cfcc881b62405273d678ee83ffabfec6a222542b29711e34cace2b06a1d6acc30ba1375fd0f414fb53549b4754022af738aae9121b31e5010146ebc23c2f66faa9b487966dc869bc9bd9ed22c4339c5784"><style type="text/css"></style><script type="text/javascript" src="./Dropzone.js_files/sf_preloader.jsp"></script><script>window["_GOOG_TRANS_EXT_VER"] = "1";</script><script type="text/javascript" src="./Dropzone.js_files/sf_code.jsp"></script><script>window["_GOOG_TRANS_EXT_VER"] = "1";</script><script type="text/javascript" src="./Dropzone.js_files/base_single_icon.js"></script><script type="text/javascript" src="./Dropzone.js_files/dojo.xd.js"></script><script type="text/javascript" charset="utf-8" src="./Dropzone.js_files/script.xd.js"></script><script type="text/javascript" charset="utf-8" src="./Dropzone.js_files/window.xd.js"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}
+.fb_invisible{display:none}
+.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}
+.fb_reset > div{overflow:hidden}
+.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}
+.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}
+.fb_dialog_content{background:#fff;color:#333}
+.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\9;right:7px\9}
+.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}
+.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}
+.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}
+.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}
+.fb_dialog_top_left,
+.fb_dialog_top_right,
+.fb_dialog_bottom_left,
+.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}
+/* @noflip */
+.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}
+/* @noflip */
+.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}
+/* @noflip */
+.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}
+/* @noflip */
+.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right,
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right{width:10px;height:100%}
+.fb_dialog_vert_left{margin-left:-10px}
+.fb_dialog_vert_right{right:0;margin-right:-10px}
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{width:100%;height:10px}
+.fb_dialog_horiz_top{margin-top:-10px}
+.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}
+.fb_dialog_iframe{line-height:0}
+.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}
+.fb_dialog_content .dialog_title > span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif)
+no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}
+body.fb_hidden{-webkit-transform:none;height:100%;margin:0;left:-10000px;overflow:visible;position:absolute;top:-10000px;width:100%
+}
+.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif)
+white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}
+.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}
+#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}
+#fb-root #fb_dialog_ipad_overlay.hidden{display:none}
+.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}
+.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}
+.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%
+}
+.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100%, from(#4966A6),
+color-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,
+rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}
+.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}
+.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}
+.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}
+#fb_dialog_loader_close{float:left}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}
+.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}
+.fb_iframe_widget iframe{position:absolute}
+.fb_iframe_widget_lift{z-index:1}
+.fb_hide_iframes iframe{position:relative;left:-10000px}
+.fb_iframe_widget_loader{position:relative;display:inline-block}
+.fb_iframe_widget_fluid{display:inline}
+.fb_iframe_widget_fluid span{width:100%}
+.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}
+.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_connect_bar_container div,
+.fb_connect_bar_container span,
+.fb_connect_bar_container a,
+.fb_connect_bar_container img,
+.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}
+.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}
+.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode=="CSS1Compat"? document.documentElement.scrollTop+"px":body.scrollTop+"px")}
+.fb_connect_bar{position:relative;margin:auto;height:100%;width:100%;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:"lucida grande", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}
+.fb_connect_bar a:hover{color:#fff}
+.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}
+.fb_connect_bar div a,
+.fb_connect_bar span,
+.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}
+.fb_connect_bar .fb_buttons{float:right;margin-top:7px}
+.fb_edge_widget_with_comment{position:relative;*z-index:1000}
+.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50% 50%;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender
+.FB_Loader{margin-top:0}
+.fbpluginrecommendationsbarleft,
+.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}
+/* @noflip */
+.fbpluginrecommendationsbarleft{left:10px}
+/* @noflip */
+.fbpluginrecommendationsbarright{right:10px}</style><script type="text/javascript" src="./Dropzone.js_files/getSupportedSitesJSON.action" id="sufioIoScript1" charset="utf-8"></script></head>
+<body data-twttr-rendered="true">
+  <!-- Facebook like button -->
+  <div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tab-index="-1" src="./Dropzone.js_files/xd_arbiter.htm" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tab-index="-1" src="./Dropzone.js_files/xd_arbiter(1).htm" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+  <article itemscope="" itemtype="http://schema.org/WebApplication">
+
+    <header>
+      <img itemprop="image" src="./Dropzone.js_files/logo@2x.png" alt="logo">
+
+      <h1 id="logo" itemprop="name">
+        <span>dropzone.js</span>
+      </h1>
+
+
+      <section id="intro" itemprop="description">
+        <h2>DropzoneJS is an open source library that provides drag'n'drop file uploads with image previews.</h2>
+      </section>
+
+      <div id="loading-font"><span>Loading fonts</span></div>
+
+
+      <section id="social-buttons">
+        <div class="social-button">
+          <iframe src="./Dropzone.js_files/github-btn.htm" allowtransparency="true" frameborder="0" scrolling="0" width="95px" height="20px"></iframe>
+        </div>
+
+        <div class="social-button">
+          <iframe allowtransparency="true" frameborder="0" scrolling="no" src="./Dropzone.js_files/tweet_button.1371247185.htm" class="twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 110px; height: 20px;"></iframe>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+
+        <div class="social-button">
+          <!-- Place this tag where you want the +1 button to render. -->
+          <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background-position: initial initial; background-repeat: initial initial;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1372783870946" name="I0_1372783870946" src="./Dropzone.js_files/fastbutton.htm" allowtransparency="true" data-gapiattached="true" title="+1"></iframe></div>
+        </div>
+
+        <div class="social-button">
+          <!-- Place this tag after the last +1 button tag. -->
+          <script type="text/javascript">
+            (function() {
+              var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+              po.src = 'https://apis.google.com/js/plusone.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+          </script>
+        </div>
+
+        <div class="social-button facebook-social-button">
+          <div class="fb-like fb_edge_widget_with_comment fb_iframe_widget" data-href="http://www.dropzonejs.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="trebuchet ms" fb-xfbml-state="rendered"><span style="height: 20px; width: 74px;"><iframe id="f3890323d4" name="f987002c" scrolling="no" title="Like this content on Facebook." class="fb_ltr" src="./Dropzone.js_files/like.htm" style="border: none; overflow: hidden; height: 20px; width: 74px;"></iframe></span></div>
+        </div>
+
+        <div class="social-button flattr-social-button">
+          <a href="http://flattr.com/thing/1163908/DropzoneJS" target="_blank"><img src="./Dropzone.js_files/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a>
+        </div>
+
+      </section>
+
+    </header>
+
+    <p></p><section markdown="1"><p></p>
+
+<p>Try it out:</p>
+
+<div id="dropzone"><form action="http://www.torrentplease.com/dropzone.php" class="dropzone dz-clickable dz-started" id="demo-upload">
+<div class="dz-default dz-message"><span>Drop files here to upload</span></div><div class="dz-preview dz-file-preview dz-processing dz-success">  <div class="dz-details">    <div class="dz-filename"><span data-dz-name="">index.html</span></div>    <div class="dz-size" data-dz-size=""><strong>31.4</strong> KB</div>    <img data-dz-thumbnail="">  </div>  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress="" style="width: 100%;"></span></div>  <div class="dz-success-mark"><span>✔</span></div>  <div class="dz-error-mark"><span>✘</span></div>  <div class="dz-error-message"><span data-dz-errormessage=""></span></div><a class="dz-remove" href="javascript:undefined;">Remove file</a></div></form></div>
+
+<p>(This is just a demo dropzone. Uploaded files are <strong>not</strong> stored.)</p>
+
+<blockquote>
+<p>Starting with Version 2.0 Dropzone no longer depends on jQuery!
+See the section "version 2.0" at the bottom of the page for more information.</p>
+</blockquote>
+
+<p>I just released Version 3.0 which has a few backwards incompatibilities. Please
+see the section <strong>version 3.0</strong> at the bottom of the page for more information.</p>
+
+<hr>
+
+<p>Please consider donating if you like this project. I've put a lot of my free
+time into this project and donations help to justify it.</p>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="CA598M5X362GQ">
+<input type="image" src="./Dropzone.js_files/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="./Dropzone.js_files/pixel.gif" width="1" height="1">
+</form>
+
+<p>Use the Paypal button above, <a href="http://tiptheweb.org/">tiptheweb</a> or my <a href="http://bitcoin.org/">Bitcoin</a> address: <strong>19k17pTRGS1ykZaL7Qeju2HgXnoPXceQme</strong></p>
+
+<p></p></section><p></p>
+
+<p></p><section markdown="1"><p></p>
+
+<h1 id="toc_0">Installation</h1>
+
+<p>Download the standalone <a href="https://raw.github.com/enyo/dropzone/master/downloads/dropzone.js">dropzone.js</a>
+and include it like this:</p>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"./path/to/dropzone.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div>
+<p>Dropzone is now activated and available as <code>window.Dropzone</code>.</p>
+
+<blockquote>
+<p>Dropzone does <em>not</em> handle your file uploads on the server. You have to implement
+the code to receive and store the file yourself.</p>
+</blockquote>
+
+<p></p></section><p></p>
+
+<p></p><section markdown="1"><p></p>
+
+<h2 id="toc_1">With component</h2>
+
+<p>If you use <a href="https://github.com/component/component">component</a> you can just add
+dropzone as a dependency:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">"enyo/dropzone": "*"
+</code></pre></div>
+<p>Then include it like this:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">Dropzone</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"dropzone"</span><span class="p">);</span>
+</code></pre></div>
+
+<p>so it is activated and scans the document.</p>
+
+<p>The basic CSS markup is also included with component, but if you want it to look
+the same as on this page, you have to download the CSS (see below).</p>
+
+<h2 id="toc_2">With RequireJS</h2>
+
+<p>Dropzone is also available as an <a href="https://github.com/amdjs/amdjs-api/wiki/AMD">AMD module</a>
+for <a href="http://requirejs.org/">RequireJS</a>.</p>
+
+<p>You can find the <a href="https://raw.github.com/enyo/dropzone/master/downloads/dropzone-amd-module.js">dropzone-amd-module</a>
+in the downloads folder.</p>
+
+<hr>
+
+<p>This is all you need to get dropzone up and running. But if you want it to look
+as cool as my dropzone, you'll need to <strong>download the css/dropzone.css,
+images/spritemap.png and images/spritemap.png@2x.png</strong> as well from the
+<a href="https://github.com/enyo/dropzone/tree/master/downloads">downloads folder</a>.</p>
+
+<p>If you change the folder names make sure you adjust the paths in the css.</p>
+
+<p>The <code>@2x.png</code> spritemap is to support high density (retina) displays.</p>
+
+<p></p></section><p></p>
+
+<p></p><section markdown="1"><p></p>
+
+<h1 id="toc_3">Usage</h1>
+
+<p>The typical way of using dropzone is by creating a form element with the class <code>dropzone</code>:</p>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"/file-upload"</span>
+      <span class="na">class=</span><span class="s">"dropzone"</span>
+      <span class="na">id=</span><span class="s">"my-awesome-dropzone"</span><span class="nt">&gt;&lt;/form&gt;</span>
+</code></pre></div>
+<p>That's it. Dropzone will find all form elements with the class dropzone,
+automatically attach itself to it, and upload files dropped into it to the
+specified <code>action</code> attribute. The uploaded files can be handled just as if
+there would have been a html input like this:</p>
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">name=</span><span class="s">"file"</span> <span class="nt">/&gt;</span>
+</code></pre></div>
+
+<p>If you want another name than <code>file</code> you can <a href="http://www.dropzonejs.com/#configure">configure dropzone</a>
+with the option <code>paramName</code>.</p>
+
+<blockquote>
+<p>If you're using component don't forget to <code>require("dropzone");</code> otherwise it won't be activated.</p>
+</blockquote>
+
+<p>If you want your file uploads to work even without JavaScript, you can include
+an element with the class <code>fallback</code> that dropzone will remove if the browser
+is supported. If the browser isn't supported, Dropzone will not create fallback
+elements if there is a fallback element already provided. (Obviously, if the
+browser doesn't support JavaScript, the form will stay as is)</p>
+
+<p>Typically this will look like this:</p>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"/file-upload"</span> <span class="na">class=</span><span class="s">"dropzone"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"fallback"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"file"</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">multiple</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div>
+<h2 id="toc_4">Create dropzones programmatically</h2>
+
+<p>Alternatively you can create dropzones programmaticaly (even on non <code>form</code>
+elements) by instantiating the <code>Dropzone</code> class</p>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="c1">// Dropzone class:</span>
+<span class="kd">var</span> <span class="nx">myDropzone</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dropzone</span><span class="p">(</span><span class="s2">"div#myId"</span><span class="p">,</span> <span class="p">{</span> <span class="nx">url</span><span class="o">:</span> <span class="s2">"/file/post"</span><span class="p">})</span>
+</code></pre></div>
+<p>or if you use jQuery, you can use the jQuery plugin Dropzone ships with:</p>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="c1">// jQuery</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">"div#myId"</span><span class="p">).</span><span class="nx">dropzone</span><span class="p">({</span> <span class="nx">url</span><span class="o">:</span> <span class="s2">"/file/post"</span> <span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>Don't forget to specify an <code>url</code> option if you're not using a form element,
+since Dropzone doesn't know where to post to without an <code>action</code> attribute. </p>
+</blockquote>
+
+<h2 id="toc_5">Server side implementation</h2>
+
+<p>Dropzone does <em>not</em> provide the server side implementation of handling the files,
+but the way files are uploaded is identical to simple file upload forms like this:</p>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">""</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">enctype=</span><span class="s">"multipart/form-data"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">name=</span><span class="s">"file"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div>
+<p>To handle basic file uploads on the server, please look at the corresponding
+documentation. Here are a few documentations, if you think I should add some,
+please contact me.</p>
+
+<ul>
+<li><a href="http://howtonode.org/af136c8ce966618cc0857dbc5e5da01e9d4d87d5/really-simple-file-uploads">NodeJS with express</a></li>
+<li><a href="http://guides.rubyonrails.org/form_helpers.html#uploading-files">Ruby on rails</a></li>
+<li><a href="http://www.startutorial.com/articles/view/how-to-build-a-file-upload-form-using-dropzonejs-and-php">Complete PHP tutorial</a> by startutorial.com</li>
+<li><a href="http://www.php.net/manual/en/features.file-upload.post-method.php#example-354">Basic PHP file upload</a></li>
+<li><a href="http://maxoffsky.com/code-blog/howto-ajax-multiple-file-upload-in-laravel/">Tutorial for Dropzone and Lavarel (PHP)</a> written by Maksim Surguy</li>
+</ul>
+
+<p>Please look at the <a href="https://github.com/enyo/dropzone/wiki/FAQ">Dropzone FAQ</a> if
+you need more information.</p>
+
+<p></p></section><p></p>
+
+<p></p><section markdown="1"><p></p>
+
+<h1 id="toc_6">Configure</h1>
+
+<p>There are two ways to configure dropzones.</p>
+
+<p>The obvious way is to pass an options object when instantiating a dropzone
+programmatically like in the previous <a href="http://www.dropzonejs.com/#create_dropzones_programmatically">create dropzones programmatically</a>
+section.</p>
+
+<p>But if you just have HTML elements with the <code>dropzone</code> class, then you don't
+programmatically instantiate the objects, so you have to store the configuration
+somewhere so Dropzone knows how to configure the dropzones when instantiating
+them.</p>
+
+<p>This is done with the <code>Dropzone.options</code> object.</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="c1">// "myAwesomeDropzone" is the camelized version of the HTML element's ID</span>
+<span class="nx">Dropzone</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">myAwesomeDropzone</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">paramName</span><span class="o">:</span> <span class="s2">"file"</span><span class="p">,</span> <span class="c1">// The name that will be used to transfer the file</span>
+  <span class="nx">maxFilesize</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="c1">// MB</span>
+  <span class="nx">accept</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">file</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="s2">"justinbieber.jpg"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">done</span><span class="p">(</span><span class="s2">"Naha, you don't."</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span> <span class="nx">done</span><span class="p">();</span> <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<p>If you want to disable the auto discover behaviour of Dropzone, you can either disable
+it on a per element basis, or in general:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="c1">// Prevent Dropzone from auto discovering this element:</span>
+<span class="nx">Dropzone</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">myAwesomeDropzone</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="c1">// This is useful when you want to create the</span>
+<span class="c1">// Dropzone programmatically later</span>
+
+<span class="c1">// Disable auto discover for all elements:</span>
+<span class="nx">Dropzone</span><span class="p">.</span><span class="nx">autoDiscover</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</code></pre></div>
+
+<p>The valid options are:</p>
+
+<table><thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>url</code></td>
+<td>Has to be specified on elements other than form (or when the form doesn't have an <code>action</code> attribute)</td>
+</tr>
+<tr>
+<td><code>method</code></td>
+<td>Defaults to <code>"post"</code> and can be changed to <code>"put"</code> if necessary.</td>
+</tr>
+<tr>
+<td><code>parallelUploads</code></td>
+<td>How many file uploads to process in parallel (See the <em>Enqueuing file uploads</em> section for more info)</td>
+</tr>
+<tr>
+<td><code>maxFilesize</code></td>
+<td>in MB</td>
+</tr>
+<tr>
+<td><code>paramName</code></td>
+<td>The name of the file param that gets transferred. Defaults to <code>file</code>. <strong>NOTE</strong>: If you have the option <code>uploadMultiple</code> set to <code>true</code>, then Dropzone will append <code>[]</code> to the name.</td>
+</tr>
+<tr>
+<td><code>uploadMultiple</code></td>
+<td>Whether Dropzone should send multiple files in one request. If this it set to true, then the fallback file input element will have the <code>multiple</code> attribute as well. This option will also trigger additional events (like <code>processingmultiple</code>). See the events section for more information.</td>
+</tr>
+<tr>
+<td><code>headers</code></td>
+<td>An object to send additional headers to the server. Eg: <code>headers: { "My-Awesome-Header": "header value" }</code></td>
+</tr>
+<tr>
+<td><code>addRemoveLinks</code></td>
+<td>This will add a link to every file preview to remove or cancel (if already uploading) the file. The <code>dictCancelUpload</code>, <code>dictCancelUploadConfirmation</code> and <code>dictRemoveFile</code> options are used for the wording.</td>
+</tr>
+<tr>
+<td><code>previewsContainer</code></td>
+<td>defines where to display the file previews – if <code>null</code> the Dropzone element is used. Can be a plain HTMLElement or a CSS selector. The element should have the <code>dropzone-previews</code> class so the previews are displayed properly.</td>
+</tr>
+<tr>
+<td><code>clickable</code></td>
+<td>If <code>true</code>, the dropzone element itself will be clickable, if <code>false</code> nothing will be clickable. Otherwise you can pass an HTML element, a CSS selector (for multiple elements) or an array of those.</td>
+</tr>
+<tr>
+<td><code>createImageThumbnails</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>maxThumbnailFilesize</code></td>
+<td>in MB. When the filename exceeds this limit, the thumbnail will not be generated</td>
+</tr>
+<tr>
+<td><code>thumbnailWidth</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>thumbnailHeight</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>resize</code></td>
+<td>is the function that gets called to create the resize information. It gets the <code>file</code> as first parameter and must return an object with <code>srcX</code>, <code>srcY</code>, <code>srcWidth</code> and <code>srcHeight</code> and the same for <code>trg*</code>. Those values are going to be used by <code>ctx.drawImage()</code>.</td>
+</tr>
+<tr>
+<td><code>init</code></td>
+<td>is a function that gets called when Dropzone is initialized. You can setup event listeners inside this function.</td>
+</tr>
+<tr>
+<td><code>acceptedMimeTypes</code></td>
+<td>The default implementation of <code>accept</code> checks the file's mime type against this list. This is a comma separated list of mime types or file extensions. Eg.: <code>image/*,application/pdf,.psd</code>. If the Dropzone is <code>clickable</code> this option will be used as <a href="https://developer.mozilla.org/en-US/docs/HTML/Element/input#attr-accept"><code>accept</code></a> parameter on the hidden file input as well.</td>
+</tr>
+<tr>
+<td><code>accept</code></td>
+<td>is a function that gets a <a href="https://developer.mozilla.org/en-US/docs/DOM/File">file</a> and a <code>done</code> function as parameter. If the done function is invoked without a parameter, the file will be processed. If you pass an error message it will be displayed and the file will not be uploaded. This function will not be called if the file is too big or doesn't match the mime types.</td>
+</tr>
+<tr>
+<td><strike><code>enqueueForUpload</code></strike></td>
+<td>Deprecated in favor of <code>autoProcessQueue</code>.</td>
+</tr>
+<tr>
+<td><code>autoProcessQueue</code></td>
+<td>When set to <code>false</code> you have to call <code>myDropzone.processQueue()</code> yourself in order to upload the dropped files. See below for more information on handling queues.</td>
+</tr>
+<tr>
+<td><code>previewTemplate</code></td>
+<td>is a string that contains the template used for each dropped image. Change it to fulfill your needs but make sure to properly provide all elements.</td>
+</tr>
+<tr>
+<td><code>forceFallback</code></td>
+<td>defaults to <code>false</code>. If <code>true</code> the fallback will be forced. This is very useful to test your server implementations first and make sure that everything works as expected without dropzone if you experience problems, and to test how your fallbacks will look.</td>
+</tr>
+<tr>
+<td><code>fallback</code></td>
+<td>is a function that gets called when the browser is not supported. The default implementation shows the fallback input field and adds a text.</td>
+</tr>
+</tbody></table>
+
+<p>to translate dropzone, you can also provide these options:</p>
+
+<table><thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>dictDefaultMessage</code></td>
+<td>The message that gets displayed before any files are dropped. This is normally replaced by an image but defaults to "Drop files here to upload"</td>
+</tr>
+<tr>
+<td><code>dictFallbackMessage</code></td>
+<td>If the browser is not supported, the default message will be replaced with this text. Defaults to "Your browser does not support drag'n'drop file uploads."</td>
+</tr>
+<tr>
+<td><code>dictFallbackText</code></td>
+<td>This will be added before the file input files. If you provide a fallback element yourself, or if this option is <code>null</code> this will be ignored. Defaults to "Please use the fallback form below to upload your files like in the olden days."</td>
+</tr>
+<tr>
+<td><code>dictInvalidFileType</code></td>
+<td>Shown as error message if the file doesn't match the file type.</td>
+</tr>
+<tr>
+<td><code>dictFileTooBig</code></td>
+<td>Shown when the file is too big.  and  will be replaced.</td>
+</tr>
+<tr>
+<td><code>dictResponseError</code></td>
+<td>Shown as error message if the server response was invalid. `` will be replaced with the servers status code.</td>
+</tr>
+<tr>
+<td><code>dictCancelUpload</code></td>
+<td>If <code>addRemoveLinks</code> is true, the text to be used for the cancel upload link.</td>
+</tr>
+<tr>
+<td><code>dictCancelUploadConfirmation</code></td>
+<td>If <code>addRemoveLinks</code> is true, the text to be used for confirmation when cancelling upload.</td>
+</tr>
+<tr>
+<td><code>dictRemoveFile</code></td>
+<td>If <code>addRemoveLinks</code> is true, the text to be used to remove a file.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>You can also overwrite all default event actions in the options. So if you provide the option <code>drop</code> you can overwrite the default <code>drop</code> event handler.
+<em>You should be familiar with the code if you do that because you can easily break the upload like this.</em>
+If you just want to do additional stuff, like adding a few classes here and there, <strong><a href="http://www.dropzonejs.com/#listen_to_events">listen to the events</a> instead</strong>!</p>
+</blockquote>
+
+<h3 id="toc_7">Enqueuing file uploads</h3>
+
+<p>When a file gets added to the dropzone, it's <code>status</code> gets set to <code>Dropzone.QUEUED</code>
+(after the <code>accept</code> function check passes) which means that the file is now
+in the queue.</p>
+
+<p>If you have the option <code>autoProcessQueue</code> set to <code>true</code> then the queue is immediately
+processed, after a file is dropped or an upload finished, by calling
+<code>.processQueue()</code> which checks how many files are currently uploading,
+and if it's less than <code>options.parallelUploads</code> <code>.processFile(file)</code> is called.</p>
+
+<p>If you set <code>autoProcessQueue</code> to <code>false</code>, then <code>.processQueue()</code> is never called
+implicitly. This means that you have to call it yourself when you want to
+upload all files currently queued.</p>
+
+<h2 id="toc_8">listen to events</h2>
+
+<p>Dropzone triggers events when processing files, to which you can register easily.</p>
+
+<p>Example:</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="c1">// The recommended way from within the init configuration:</span>
+<span class="nx">Dropzone</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">myAwesomeDropzone</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"addedfile"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">"Added file."</span><span class="p">);</span> <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// Or programmatically, when creating a Dropzone.</span>
+<span class="c1">// This is more complex and should only be used if you need to create your</span>
+<span class="c1">// Dropzones on demand.</span>
+<span class="c1">// </span>
+<span class="c1">// This example uses jQuery so it creates the Dropzone, only when the DOM has</span>
+<span class="c1">// loaded.</span>
+
+<span class="c1">// Disabling autoDiscover, otherwise Dropzone will try to attach twice.</span>
+<span class="nx">Dropzone</span><span class="p">.</span><span class="nx">autoDiscover</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="c1">// or disable for specific dropzone:</span>
+<span class="c1">// Dropzone.options.myDropzone = false;</span>
+
+<span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Now that the DOM is fully loaded, create the dropzone, and setup the </span>
+  <span class="c1">// event listeners</span>
+
+  <span class="kd">var</span> <span class="nx">myDropzone</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dropzone</span><span class="p">(</span><span class="s2">"#my-dropzone"</span><span class="p">);</span>
+
+  <span class="nx">myDropzone</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"addedfile"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* Maybe display some more file information on your page */</span>
+  <span class="p">});</span>
+
+<span class="p">})</span>
+</code></pre></div>
+
+<p>Available events:</p>
+
+<p>All of these receive the <a href="https://developer.mozilla.org/en-US/docs/DOM/event">event</a> as first parameter:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>drop</code></td>
+<td>The user dropped something onto the dropzone</td>
+</tr>
+<tr>
+<td><code>dragstart</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>dragend</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>dragenter</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>dragover</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>dragleave</code></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>All of these receive the <a href="https://developer.mozilla.org/en-US/docs/DOM/File">file</a> as the first parameter:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>addedfile</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>removedfile</code></td>
+<td>Called whenever a file is removed from the list. You can listen to this and delete the file from your server if you want to.</td>
+</tr>
+<tr>
+<td><code>selectedfiles</code></td>
+<td>Receives an array of files and gets called whenever files are dropped or selected.</td>
+</tr>
+<tr>
+<td><code>thumbnail</code></td>
+<td>When the thumbnail has been generated. Receives the <a href="http://en.wikipedia.org/wiki/Data_URI_scheme"><strong>dataUrl</strong></a> as second parameter.</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td>An error occured. Receives the <strong>errorMessage</strong> as second parameter and if the error was due to the XMLHttpRequest the xhr object as third.</td>
+</tr>
+<tr>
+<td><code>processing</code></td>
+<td>When a file gets processed (since there is a queue not all files are processed immediately). This event was called <code>processingfile</code> previously.</td>
+</tr>
+<tr>
+<td><code>uploadprogress</code></td>
+<td>Gets called periodically whenever the file upload progress changes.<br>Gets the <strong>progress</strong> parameter as second parameter which is a percentage (0-100) and the <strong>bytesSent</strong> parameter as third which is the number of the bytes that have been sent to the server.<br>When an upload finishes dropzone <em>ensures</em> that uploadprogress will be called with a percentage of 100 <em>at least</em> once.<br><strong>Warning:</strong> This function can potentially be called with the same progress multiple times.</td>
+</tr>
+<tr>
+<td><code>sending</code></td>
+<td>Called just before the file is sent. <strong>CAREFUL</strong>: if you have enabled <code>uploadMultiple</code> then this gets called only once with the array of uploaded files as first parameter. Gets the xhr object and the <a href="https://developer.mozilla.org/en-US/docs/DOM/XMLHttpRequest/FormData">formData</a> objects as second and third parameters, so you can modify them (for example to add a CSRF token) or add additional data.</td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td>The file has been uploaded successfully. Gets the server response as second argument. (This event was called <code>finished</code> previously)</td>
+</tr>
+<tr>
+<td><code>complete</code></td>
+<td>Called when the upload was either successful or erroneous.</td>
+</tr>
+<tr>
+<td><code>canceled</code></td>
+<td>Called when a file upload gets canceled.</td>
+</tr>
+<tr>
+<td><code>reset</code></td>
+<td>Called when all files in the list are removed and the dropzone is reset to initial state.</td>
+</tr>
+</tbody></table>
+
+<p>All of these receive a list of files as first parameter and are only called if the <code>uploadMultiple</code> option is true:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>processingmultiple</code></td>
+<td>See <code>processing</code> for description.</td>
+</tr>
+<tr>
+<td><code>sendingmultiple</code></td>
+<td>See <code>sending</code> for description.</td>
+</tr>
+<tr>
+<td><code>successmultiple</code></td>
+<td>See <code>success</code> for description.</td>
+</tr>
+<tr>
+<td><code>completemultiple</code></td>
+<td>See <code>complete</code> for description.</td>
+</tr>
+<tr>
+<td><code>canceledmultiple</code></td>
+<td>See <code>canceled</code> for description.</td>
+</tr>
+</tbody></table>
+
+<p>Special event:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>totaluploadprogress</code></td>
+<td>Called with the total upload progress (0-100), the totalBytes and the totalBytesSent. This event can be used to show the overall upload progress of all files.</td>
+</tr>
+</tbody></table>
+
+<h2 id="toc_9">layout</h2>
+
+<p>The HTML that is generated for each file by dropzone is defined with the option <code>previewTemplate</code> which defaults to this:</p>
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dz-preview dz-file-preview"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dz-details"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dz-filename"</span><span class="nt">&gt;&lt;span</span> <span class="na">data-dz-name</span><span class="nt">&gt;&lt;/span&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dz-size"</span> <span class="na">data-dz-size</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">data-dz-thumbnail</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dz-progress"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"dz-upload"</span> <span class="na">data-dz-uploadprogress</span><span class="nt">&gt;&lt;/span&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dz-success-mark"</span><span class="nt">&gt;&lt;span&gt;</span>✔<span class="nt">&lt;/span&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dz-error-mark"</span><span class="nt">&gt;&lt;span&gt;</span>✘<span class="nt">&lt;/span&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dz-error-message"</span><span class="nt">&gt;&lt;span</span> <span class="na">data-dz-errormessage</span><span class="nt">&gt;&lt;/span&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
+
+<p>The container (<code>dz-preview</code>) gets the <code>dz-processing</code> class when the file gets processed, <code>dz-success</code> when the file got uploaded and <code>dz-error</code> in case the file couldn't be uploaded.
+In the latter case, <code>[data-dz-errormessage]</code> will contain the text returned by the server.</p>
+
+<p>You can access the HTML of the file preview in any of the events with <code>file.previewElement</code>.</p>
+
+<p>If you decide to rewrite the <code>previewTemplate</code> from scratch, you should put elements with the <code>data-dz-*</code> attributes inside:</p>
+
+<ul>
+<li><code>data-dz-name</code></li>
+<li><code>data-dz-size</code></li>
+<li><code>data-dz-thumbnail</code> (This has to be an <code>&lt;img /&gt;</code> element and the <code>alt</code> and <code>src</code> attributes will be changed by Dropzone)</li>
+<li><code>data-dz-uploadprogress</code> (Dropzone will change the <code>style.width</code> property from <code>0%</code> to <code>100%</code> whenever there's a <code>uploadprogress</code> event)</li>
+<li><code>data-dz-errormessage</code></li>
+</ul>
+
+<p>The default options for Dropzone will look for those element and update the content for it.</p>
+
+<p>You are not forced to use those conventions though. If you override all the default event listeners
+you can completely rebuild your layout from scratch.</p>
+
+<p>See the installation section on how to add the stylesheet and spritemaps if you want your dropzone to look like the one on this page.</p>
+
+<p>Again, please look at the <a href="https://github.com/enyo/dropzone/wiki/FAQ">Dropzone FAQ</a> if
+you're still unclear about some features.</p>
+
+<h2 id="toc_10">dropzone methods</h2>
+
+<p>If you want to remove an added file from the dropzone, you can call <code>.removeFile(file)</code>.
+This method also triggers the <code>removedfile</code> event.</p>
+
+<p>Here's an example that would automatically remove a file when it's finished uploading:</p>
+
+<div class="highlight"><pre><code class="js"><span class="nx">myDropzone</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"complete"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">myDropzone</span><span class="p">.</span><span class="nx">removeFile</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p>If you want to remove all files, simply use <code>.removeAllFiles()</code>. Files that are
+in the process of being uploaded won't be removed. If you want files that are
+currently uploading to be canceled, call <code>.removeAllFiles(true)</code> which will
+cancel the uploads.</p>
+
+<hr>
+
+<p>If you have <code>autoProcessQueue</code> disabled, you'll need to call <code>.processQueue()</code>
+yourself.</p>
+
+<p>This can be useful if you want to display the files and let the user click an
+accept button to actually upload the file(s).</p>
+
+<hr>
+
+<p>To access all files in the dropzone, use <code>myDropzone.files</code>.</p>
+
+<p>To get</p>
+
+<ul>
+<li>all accepted files: <code>.getAcceptedFiles()</code></li>
+<li>all rejected files: <code>.getRejectedFiles()</code></li>
+<li>all queued files: <code>.getQueuedFiles()</code></li>
+<li>all uploading files: <code>.getUploadingFiles()</code></li>
+</ul>
+
+<hr>
+
+<p>If you do not need a dropzone anymore, just call <code>.disable()</code> on the object. This
+will remove all event listeners on the element, and clear all file arrays. To
+reenable a Dropzone use <code>.enable()</code>.</p>
+
+<h2 id="toc_11">tips</h2>
+
+<p>If your dropzone is rather square than a wide horizontal bar, you can add the class
+<code>square</code> to your dropzone and it will create the default message in three lines
+so it's not that wide.</p>
+
+<p>If you do not want the default message at all (»Drop files to upload (or click)«), you can
+put an element inside your dropzone element with the class <code>dz-message</code> and dropzone
+will not create the message for you.</p>
+
+<p>Dropzone will submit any hidden fields you have in your dropzone form. So this
+is an easy way to submit additional data. You can also use the <code>params</code> option.</p>
+
+<p>Dropzone adds data to the <code>file</code> object you can use when events fire. You can access
+<code>file.width</code> and <code>file.height</code> if it's an image, as well as <code>file.upload</code> which
+is an object containing: <code>progress</code> (0-100), <code>total</code> (the total bytes) and
+<code>bytesSent</code>.</p>
+
+<p>If you want to add additional data to the file upload that has to be specific for
+each file, you can register for the <code>sending</code> event:</p>
+
+<div class="highlight"><pre><code class="js"><span class="nx">myDropzone</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"sending"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">xhr</span><span class="p">,</span> <span class="nx">formData</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">formData</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"filesize"</span><span class="p">,</span> <span class="nx">file</span><span class="p">.</span><span class="nx">size</span><span class="p">);</span> <span class="c1">// Will send the filesize along with the file as POST data.</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p>To access the preview html of a file, you can access <code>file.previewElement</code>. For
+example:</p>
+
+<div class="highlight"><pre><code class="js"><span class="nx">myDropzone</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"addedfile"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">file</span><span class="p">.</span><span class="nx">previewElement</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">myDropzone</span><span class="p">.</span><span class="nx">removeFile</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span> <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p>If you want the whole body to be a Dropzone and display the files somewhere else
+you can simply instantiate a Dropzone object for the body, and define the
+<code>previewsContainer</code> option. The <code>previewsContainer</code> should have the
+<code>dropzone-previews</code> or <code>dropzone</code> class to properly display the file previews.</p>
+
+<div class="highlight"><pre><code class="js"><span class="k">new</span> <span class="nx">Dropzone</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">previewsContainer</span><span class="o">:</span> <span class="s2">".dropzone-previews"</span><span class="p">,</span>
+  <span class="c1">// You probably don't want the whole body</span>
+  <span class="c1">// to be clickable to select files</span>
+  <span class="nx">clickable</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p>I'll add more examples soon (How to add delete/download buttons when an upload finished,
+how to add file previews on your own, etc...). In the meantime you can look at
+the <a href="https://github.com/enyo/dropzone/wiki">github wiki</a> for some information.</p>
+
+<p>Don't hesitate to create an issue on github if you're stuck or think a feature
+is missing.</p>
+
+<p></p></section><p></p>
+
+<p></p><section markdown="1"><p></p>
+
+<h1 id="toc_12">browser support</h1>
+
+<ul>
+<li>Chrome 7+</li>
+<li>Firefox 4+</li>
+<li>IE 10+</li>
+<li>Opera 12+ (Currently disabled for MacOS because their API is buggy)</li>
+<li>Safari 6+</li>
+</ul>
+
+<p>For all the other browsers, dropzone provides an oldschool file input fallback.</p>
+
+<p>As a side note: I have received various «complaints» about not supporting
+earlier versions of Internet Explorer – some even called me an IE hater. Although
+I don't really object to that, the reason I do not support earlier versions of
+IE is very simple: IE up until version 10 does not provide the required APIs
+to implement only a fraction of what Dropzone aspires to do. If I were an IE
+hater, I wouldn't implement IE10 neither. But IE10 actually supports the APIs
+Dropzone requires, so it's supported. It's as simple as that. (The same goes
+for earlier versions of Firefox, Opera and Safari but those browsers have a
+good conversion rate and nobody uses Firefox 3.5 anymore. Why some people still
+use IE8 is beyond me.)</p>
+
+<p></p></section><p></p>
+
+<p></p><section markdown="1"><p></p>
+
+<h1 id="toc_13">why?</h1>
+
+<p>I realize that there
+<a href="http://valums.com/ajax-upload/">are</a>
+<a href="http://tutorialzine.com/2011/09/html5-file-upload-jquery-php/">already</a>
+<a href="http://code.google.com/p/html5uploader/">other</a>
+<a href="http://blueimp.github.com/jQuery-File-Upload/">libraries</a>
+out there but the reasons I decided to write my own are the following:</p>
+
+<ul>
+<li>I didn't want it to be too big, and too cumbersome to dive into.</li>
+<li>I want it to work without frameworks (like jQuery)</li>
+<li>I want to design my own elements. I only want to register callbacks so I can update my elements accordingly.</li>
+<li>Big files should get uploaded without a problem.</li>
+<li>I wanted a callback for image previews, that don't kill the browser if too many too big images are viewed.</li>
+<li>I want to use the latest API of browsers. I don't care if it falls back to the normal upload form if the browser is too old.</li>
+</ul>
+
+<h1 id="toc_14">version 3.0</h1>
+
+<ul>
+<li>All classes are prefixed with <code>dz-</code> now to prevent clashing with other CSS definitions</li>
+<li>The way <code>previewTemplate</code> is defined has changed. You have to provide <code>data-dz-*</code> elements now</li>
+<li>If the server returns JSON, it will be parsed for error messages as well</li>
+<li>There's a <code>dict*</code> option for all of the visible messages</li>
+<li>Lots of minor fixes and changes</li>
+</ul>
+
+<h1 id="toc_15">version 2.0</h1>
+
+<p>Starting with version 2.0, Dropzone no longer depends on jQuery, but Dropzone
+still registers itself as a jQuery module if available.</p>
+
+<p>That means that creating your Dropzones like this still works:</p>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s2">"#my-dropzone"</span><span class="p">).</span><span class="nx">dropzone</span><span class="p">({</span> <span class="cm">/* options */</span> <span class="p">});</span>
+</code></pre></div>
+<p>If you create your Dropzones with the normal constructor though, you have to
+pass either the raw HTMLElement, or a selector string. So those versions all
+work:</p>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="c1">// With jQuery</span>
+<span class="k">new</span> <span class="nx">Dropzone</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">"#my-dropzone"</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+<span class="c1">// Without jQuery</span>
+<span class="k">new</span> <span class="nx">Dropzone</span><span class="p">(</span><span class="s2">"#my-dropzone"</span><span class="p">);</span>
+<span class="k">new</span> <span class="nx">Dropzone</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"#my-dropzone"</span><span class="p">));</span>
+</code></pre></div>
+<p>Another thing that changed, is that Dropzone no longer stores it's instances
+inside the element's data property. So to get a dropzone for an element do this
+now:</p>
+<div class="highlight"><pre><code class="js language-js" data-lang="js"><span class="c1">// DEPRECATED, do not use:</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">"#my-dropzone"</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s2">"dropzone"</span><span class="p">);</span> <span class="c1">// won't work anymore</span>
+<span class="c1">// Do this now:</span>
+<span class="nx">Dropzone</span><span class="p">.</span><span class="nx">forElement</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span> <span class="c1">// Providing a raw HTMLElement</span>
+<span class="c1">// or</span>
+<span class="nx">Dropzone</span><span class="p">.</span><span class="nx">forElement</span><span class="p">(</span><span class="s2">"#my-dropzone"</span><span class="p">);</span> <span class="c1">// Providing a selector string.</span>
+</code></pre></div>
+<p></p></section><p></p>
+
+
+
+    <section>
+
+      <h1>other projects</h1>
+
+      <div id="opentip-demo" data-ot="Hi, I&#39;m an Opentip" ,="" data-ot-style="dark">
+        You might also be interested in my <a href="http://www.opentip.org/">open source tooltip library Opentip</a>.
+      </div>
+
+    </section>
+
+  </article>
+
+  <footer><div>
+
+    <section>
+
+      <h1>Written &amp; <span>designed by</span></h1>
+
+      <p>Matias Meno &lt;m@tias.me&gt;</p>
+
+    </section>
+
+    <section>
+
+      <h1>MIT License</h1>
+
+      <p>Dropzone is licensed under MIT.</p>
+
+      <p>Copyright (c) 2012 Matias Meno</p>
+
+    </section>
+
+    <section>
+
+      <p>Permission is hereby granted, free of charge, to any person obtaining a copy
+      of this software and associated documentation files (the "Software"), to deal
+      in the Software without restriction, including without limitation the rights
+      to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+      copies of the Software, and to permit persons to whom the Software is
+      furnished to do so, subject to the following conditions:</p>
+
+      <p>The above copyright notice and this permission notice shall be included in all
+      copies or substantial portions of the Software.</p>
+
+    </section>
+
+    <section>
+
+      <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+      IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+      FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+      AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+      LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+      OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+      SOFTWARE.</p>
+
+    </section>
+
+  </div></footer>
+
+  <a href="https://github.com/enyo/dropzone" id="fork-me"><span>Fork me on GitHub</span></a>
+
+<input type="file" multiple="multiple" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;"><sfmsg id="sfMsgId" data="{&quot;imageCount&quot;:0,&quot;ip&quot;:&quot;1.1.1.1&quot;}"></sfmsg></body></html>
