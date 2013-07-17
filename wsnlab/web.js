@@ -161,7 +161,7 @@ $(".btnselector").click(function(){
 		// in case "Neighbors Graph" clicked
 		else if ($(this).text()=="Neighbors Graph" ) {
 			$(".modalBody").html("\
-				<label>RSSI:</label>\
+				<label>Signal strength:</label>\
 				<input id='amount' type='text' class='span1' value='45'>\
 				<div id='slider-range-max'></div><hr>\
 				<button class='btn'>Refresh</button>\
@@ -174,6 +174,7 @@ $(".btnselector").click(function(){
 				  range: "max",
 				  min: 20,
 				  max: 80,
+				  step: 10,
 				  value: 40,
 				  slide: function( event, ui ) {
 					$( "#amount" ).val( ui.value );
