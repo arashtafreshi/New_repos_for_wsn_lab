@@ -2,7 +2,7 @@
 var GroupID=0;
 $(".MotesGroup").click(function(){
 	GroupID = $(this).attr("data-groupID");
-	alert(GroupID);
+	alert("GroupID : "+GroupID);
 });
 
 $("#bigImgCon").css("background-color","black");
@@ -14,9 +14,9 @@ $("#img1").click(function(){
 	$(".btnselector").toggleClass("disabled");
 
 	// setting the position of motes on image
-	setCoord(1,0.11);
-	setCoord(2,0.44);
-	setCoord(3,0.72);
+		setCoord("bigimg1" , 1 , 0.11 , 0.23 , 0.44 , 0.75);
+		setCoord("bigimg1" , 2 , 0.44 , 0.23 , 0.59 , 0.77);
+		setCoord("bigimg1" , 3 , 0.73 , 0.26 , 0.87 , 0.78);
 });
 
 // activates when button clicked
@@ -266,6 +266,7 @@ $(".btnselector").click(function(){
 		    		<div class='bar bar-danger' style='width:67%;'></div>\
 		    	</div><hr>\
 			");
+			
 		}
 
 		// show modal anyway
@@ -274,19 +275,7 @@ $(".btnselector").click(function(){
 	};
 });
 
-// Set the Coordinates for points which describe the mote position on image
-// id: to selecting the target area
-// relationalcorrd: to give the relational position of top-left pont of the area as initial point
-function setCoord(id,relationalcoord) {
-	var h = $("#bigimg1").height();
-	var w = $("#bigimg1").width();
-	
-	var p1h = h /4;
-	var p1w = relationalcoord * w;
-	var p2h = (3*h) / 4;
-	var p2w = p1w + (0.13*w);
-	$("#area"+id).attr("coords",p1w+","+p1h+","+p2w+","+p2h);
-}
+
 
 // When area on image clicked, then toggle its existence
 $(".area").click("click",function(){
@@ -316,4 +305,40 @@ $("#btnlogin").click(function(){
 
 function InsertToDB(JsonString) {
 	$.post("php/insert.php" , JsonString);
+}
+
+// Event: after corousel image changed do:
+$("#myCarousel").on("slid",function(e){
+	var index = $("#myCarousel .active").index();
+
+	if (index == 0){
+		setCoord("bigimg1" , 1 , 0.11 , 0.23 , 0.44 , 0.75);
+		setCoord("bigimg1" , 2 , 0.44 , 0.23 , 0.59 , 0.77);
+		setCoord("bigimg1" , 3 , 0.73 , 0.26 , 0.87 , 0.78);
+	}
+	else if (index == 1) {
+		setCoord("bigimg2" , 1 , 0.2 , 0.11 , 0.43 , 0.85);
+		setCoord("bigimg2" , 2 , 0.53 , 0.27 , 0.65 , 0.76);
+		setCoord("bigimg2" , 3 , 0.7 , 0.37 , 0.78 , 0.73);
+	} 
+	else if (index == 2){
+		setCoord("bigimg3" , 1 , 0.15 , 0.30 , 0.23 , 0.64);
+		setCoord("bigimg3" , 2, 0.32 , 0.27 , 0.45 , 0.73);
+		setCoord("bigimg3" , 3 , 0.61 , 0.14 , 0.82 , 0.83);
+	}
+});
+
+// setting area coordinates for selecting/deselecting motes
+// patter:    (Id of the image , MoteID , x_coord of top-left , y_coor of top-left , x_coord of bottom-right , y_coord of bottom-right) 
+// ****************  coord values are ratio  **************************
+function setCoord(imgID , id , rx1 , ry1 , rx2 , ry2) {
+	var h = $("#"+imgID).height();
+	var w = $("#"+imgID).width();
+
+	var p1h = ry1 * h;
+	var p1w = rx1 * w;
+	var p2h = ry2 * h;
+	var p2w = rx2 * w;
+
+	$("#area"+id).attr("coords",p1w+","+p1h+","+p2w+","+p2h);
 }
