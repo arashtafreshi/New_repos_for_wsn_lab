@@ -161,10 +161,10 @@ $(".btnselector").click(function(){
 		// in case "Neighbors Graph" clicked
 		else if ($(this).text()=="Neighbors Graph" ) {
 			$(".modalBody").html("\
-				<label>Signal strength:</label>\
+				<label>Transmission Power:</label>\
 				<input id='amount' type='text' class='span1' value='45'>\
 				<div id='slider-range-max'></div><hr>\
-				<button class='btn'>Refresh</button>\
+				<button class='btn'>Draw Neighbor Graph</button>\
 				<canvas id='viewport' width='500' height='300'></canvas>\
 			");
 
@@ -172,10 +172,10 @@ $(".btnselector").click(function(){
 			$(function() {
 				$( "#slider-range-max" ).slider({
 				  range: "max",
-				  min: 20,
-				  max: 80,
-				  step: 10,
-				  value: 40,
+				  min: 1,
+				  max: 31,
+				  step: 3,
+				  value: 1,
 				  slide: function( event, ui ) {
 					$( "#amount" ).val( ui.value );
 				  }
