@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2013 at 10:13 AM
+-- Generation Time: Jul 18, 2013 at 01:33 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.16
 
@@ -90,19 +90,24 @@ INSERT INTO `job` (`JobID`, `MoteID`, `GroupID`, `ActivityID`, `JobDate`, `UserI
 
 CREATE TABLE IF NOT EXISTS `mote` (
   `MoteID` int(11) NOT NULL,
+  `MoteTosNodeID` int(11) NOT NULL,
   `MoteName` varchar(40) NOT NULL,
   `GroupID` int(11) NOT NULL,
-  PRIMARY KEY (`MoteID`)
+  PRIMARY KEY (`MoteID`),
+  UNIQUE KEY `MoteID` (`MoteID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mote`
 --
 
-INSERT INTO `mote` (`MoteID`, `MoteName`, `GroupID`) VALUES
-(0, 'Amy', 0),
-(1, 'Stuart', 0),
-(2, 'Barry', 0);
+INSERT INTO `mote` (`MoteID`, `MoteTosNodeID`, `MoteName`, `GroupID`) VALUES
+(0, 0, 'Amy', 0),
+(1, 1, 'Stuart', 0),
+(2, 2, 'Barry', 0),
+(3, 0, 'X', 1),
+(4, 1, 'Y', 1),
+(5, 2, 'Z', 1);
 
 -- --------------------------------------------------------
 
