@@ -1,0 +1,8 @@
+<!-- This file allows the application developer to specify the name, size, and (optionally) the base address of each volume in the flash-->
+
+<volume_table>
+
+	<volume name="LOGTEST" size="262144"/>
+	<volume name="CONFIGTEST" size="131072"/>
+
+</volume_table>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2013 at 01:33 PM
+-- Generation Time: Jul 18, 2013 at 09:07 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.16
 
@@ -34,6 +34,13 @@ CREATE TABLE IF NOT EXISTS `activity` (
   PRIMARY KEY (`ActivityID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `activity`
+--
+
+INSERT INTO `activity` (`ActivityID`, `ActivityName`) VALUES
+(1, 'BeaconSend');
+
 -- --------------------------------------------------------
 
 --
@@ -42,9 +49,16 @@ CREATE TABLE IF NOT EXISTS `activity` (
 
 CREATE TABLE IF NOT EXISTS `file` (
   `ActivityID` int(11) NOT NULL,
-  `ExeFile` longblob NOT NULL,
+  `FileAddress` varchar(40) CHARACTER SET ascii NOT NULL,
   PRIMARY KEY (`ActivityID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `file`
+--
+
+INSERT INTO `file` (`ActivityID`, `FileAddress`) VALUES
+(1, '/TOSFile/Beacon.ihex');
 
 -- --------------------------------------------------------
 
