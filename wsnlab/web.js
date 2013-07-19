@@ -247,6 +247,34 @@ $(".btnselector").click(function(){
 
 
 		}
+		
+		else if ($(this).text()=="Send Beacon" ) {
+			
+			$(".modalBody").html("\
+				<p>Check Blue Leds on Motes</p>\
+		    	<p>If they are Blinking everything is file with BeaconSend in your system</p>\
+		    		<div class='bar' style='width:40%;'></div>\
+		    	</div><hr>\
+			");
+
+			// Insert job into DB
+			$("tr.SelectedMote").each(function(){
+				var MoteID = $(this).attr("data-MoteID");
+				var currentTime = new Date();
+				var JsonToSend = {
+					"DBTable":"job" ,
+					"ActivityID":4 ,
+				  	"GroupID":GroupID ,
+				   	"JobDate":currentTime ,
+				    "JobID":3 ,
+			     	"MoteID":MoteID ,
+				"UserID":3};
+				InsertToDB(JsonToSend);
+				
+			});
+
+
+		}
 
 		else  {
 			//$(".modalBody").html("<p>Empty</p>");
