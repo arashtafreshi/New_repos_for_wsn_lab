@@ -96,13 +96,13 @@
 
 			<div class="span4 well">
 				<h4>Option:</h4>
-				<label class="radio">
-					<input type="radio" name="optionsRadio" checked>
-						Select all motes
-				</label>
-				<label class="radio">
-					<input type="radio" name="optionsRadio">
-						Select multiple motes
+				<div class="row-fluid">
+					<button id="btnSelectAll" class="btn">Select all</button>
+					<button id="btnDeselectAll" class="btn">Deselect all</button>
+				</div>
+
+				<label >
+						<hr>OR, click on each mote to select / deselect
 				</label>
 
 				<table class="table table-bordered table striped table-hover">
@@ -129,7 +129,7 @@
 							<td>Barry</td>
 							<td></td>
 						</tr>
-						<tr class="hide mote3" MoteID="3">
+						<!--<tr class="hide mote3" MoteID="3">
 							<td>3</td>
 							<td>Arash</td>
 							<td></td>
@@ -143,7 +143,7 @@
 							<td>5</td>
 							<td>Matteo</td>
 							<td></td>
-						</tr>
+						</tr>-->
 					</tbody>
 
 				</table>

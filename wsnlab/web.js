@@ -2,7 +2,7 @@
 var GroupID=0;
 $(".MotesGroup").click(function(){
 	GroupID = $(this).attr("data-groupID");
-	alert("GroupID : "+GroupID);
+	//alert("GroupID : "+GroupID);
 });
 
 $("#bigImgCon").css("background-color","black");
@@ -14,7 +14,7 @@ $("#img1").click(function(){
 	$(".btnselector").toggleClass("disabled");
 
 	// setting the position of motes on image
-		setCoord("bigimg1" , 1 , 0.11 , 0.23 , 0.44 , 0.75);
+		setCoord("bigimg1" , 1 , 0.11 , 0.23 , 0.27 , 0.75);
 		setCoord("bigimg1" , 2 , 0.44 , 0.23 , 0.59 , 0.77);
 		setCoord("bigimg1" , 3 , 0.73 , 0.26 , 0.87 , 0.78);
 });
@@ -312,7 +312,7 @@ $("#myCarousel").on("slid",function(e){
 	var index = $("#myCarousel .active").index();
 
 	if (index == 0){
-		setCoord("bigimg1" , 1 , 0.11 , 0.23 , 0.44 , 0.75);
+		setCoord("bigimg1" , 1 , 0.11 , 0.23 , 0.27 , 0.75);
 		setCoord("bigimg1" , 2 , 0.44 , 0.23 , 0.59 , 0.77);
 		setCoord("bigimg1" , 3 , 0.73 , 0.26 , 0.87 , 0.78);
 	}
@@ -342,3 +342,12 @@ function setCoord(imgID , id , rx1 , ry1 , rx2 , ry2) {
 
 	$("#area"+id).attr("coords",p1w+","+p1h+","+p2w+","+p2h);
 }
+
+
+$("#btnDeselectAll").on("click",function(){
+	$(".SelectedMote").toggleClass("hide SelectedMote");
+});
+
+$("#btnSelectAll").on("click",function(){
+	$("tr.hide").toggleClass("hide SelectedMote");
+});
