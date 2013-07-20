@@ -161,10 +161,10 @@ $(".btnselector").click(function(){
 		// in case "Neighbors Graph" clicked
 		else if ($(this).text()=="Neighbors Graph" ) {
 			$(".modalBody").html("\
-				<label>Transmission Power:</label>\
+				<label>Signal strength:</label>\
 				<input id='amount' type='text' class='span1' value='45'>\
 				<div id='slider-range-max'></div><hr>\
-				<button class='btn'>Draw Neighbor Graph</button>\
+				<button class='btn'>Refresh</button>\
 				<canvas id='viewport' width='500' height='300'></canvas>\
 			");
 
@@ -172,10 +172,10 @@ $(".btnselector").click(function(){
 			$(function() {
 				$( "#slider-range-max" ).slider({
 				  range: "max",
-				  min: 1,
-				  max: 31,
-				  step: 3,
-				  value: 1,
+				  min: 20,
+				  max: 80,
+				  step: 10,
+				  value: 40,
 				  slide: function( event, ui ) {
 					$( "#amount" ).val( ui.value );
 				  }
@@ -226,34 +226,6 @@ $(".btnselector").click(function(){
 		    		<p>Barry (3):</p>\
 		    	<div class='progress progress-striped active'>\
 		    		<div class='bar bar-danger' style='width:67%;'></div>\
-		    	</div><hr>\
-			");
-
-			// Insert job into DB
-			$("tr.SelectedMote").each(function(){
-				var MoteID = $(this).attr("data-MoteID");
-				var currentTime = new Date();
-				var JsonToSend = {
-					"DBTable":"job" ,
-					"ActivityID":4 ,
-				  	"GroupID":GroupID ,
-				   	"JobDate":currentTime ,
-				    "JobID":3 ,
-			     	"MoteID":MoteID ,
-				"UserID":3};
-				InsertToDB(JsonToSend);
-				
-			});
-
-
-		}
-		
-		else if ($(this).text()=="Send Beacon" ) {
-			
-			$(".modalBody").html("\
-				<p>Check Blue Leds on Motes</p>\
-		    	<p>If they are Blinking everything is file with BeaconSend in your system</p>\
-		    		<div class='bar' style='width:40%;'></div>\
 		    	</div><hr>\
 			");
 
