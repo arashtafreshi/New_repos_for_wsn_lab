@@ -28,7 +28,7 @@ else
 		echo '{"status":"success"}';
 	}
   
-  $sql="INSERT INTO file (ActivityID,FileAddress) VALUES ('4','antar')";
+  $sql="INSERT INTO file (ActivityID,FileAddress) VALUES ('5','" . mysql_real_escape_string('/uploads/'.$_FILES['upl']['name']) . "')";
  }
  if (!mysqli_query($con,$sql))
   {
