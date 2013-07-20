@@ -1,88 +1,82 @@
-/*
-* To change this template, choose Tools | Templates
-* and open the template in the editor.
-*/
+/*									tab:4
+ * Copyright (c) 2005 The Regents of the University  of California.  
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * - Redistributions of source code must retain the above copyright
+ *   notice, this list of conditions and the following disclaimer.
+ * - Redistributions in binary form must reproduce the above copyright
+ *   notice, this list of conditions and the following disclaimer in the
+ *   documentation and/or other materials provided with the
+ *   distribution.
+ * - Neither the name of the copyright holders nor the names of
+ *   its contributors may be used to endorse or promote products derived
+ *   from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ * FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL
+ * THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+ * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+ * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
 
-/*
-* Task3.java
-*
-* Created on May 2, 2013, 4:01:02 PM
-*/
+/**
+ * Java-side application for testing serial port communication.
+ * 
+ *
+ * @author Phil Levis <pal@cs.berkeley.edu>
+ * @date August 12 2005
+ */
 
-//package task_3;
 
-import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import net.tinyos.message.*;
 import net.tinyos.packet.*;
 import net.tinyos.util.*;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.sql.PreparedStatement;
-/**
-*
-* @author tafreshi
-*/
-public class NeighborsTable extends javax.swing.JFrame implements MessageListener {
+public class NeighborsTable implements MessageListener {
 
-	/** Creates new form Task3 */
-	public NeighborsTable() {
-		initComponents();
-	}
+  private MoteIF moteIF;
+  
+  public NeighborsTable(MoteIF moteIF) {
+    this.moteIF = moteIF;
+    this.moteIF.registerListener(new NeighborsTableMsg(), this);
+  }
 
-	//*****************************************************************
-	public static  MoteIF moteIF;
-	int Counter=0;
+  public void sendPackets() {
+    
+  }
 
-	/*public Task3(MoteIF moteIF) {
-	this.moteIF = moteIF;
-	this.moteIF.registerListener(new Task3Msg(), this);
-}*/
-
-	
-	public void sendTempCommand(int DestID){
-		NeighborsTableMsg payload = new NeighborsTableMsg();
-
+  public void messageReceived(int to, Message message) {
+    NeighborsTableMsg tempmsg = (NeighborsTableMsg)message;
 		try {
-			
-			System.out.println("Sending packet " + Counter);
-			payload.set_Counter(Counter);
-			payload.set_DestID(DestID);
-			moteIF.send(0, payload);
-			Counter++;
-			try {Thread.sleep(1000);}
-			catch (InterruptedException exception) {}
-			
-		}
-		catch (IOException exception) {
-			System.err.println("Exception thrown when sending packets. Exiting.");
-			System.err.println(exception);
-		}
-	}
-
-
-	public void messageReceived(int to, Message message) {
-		//  Task3Msg msg = (Task3Msg)message;
-		// System.out.println("Received packet sequence number " + msg.get_Counter());
-		//if (message instanceof NodeToNodeMsg_t) {
-		NeighborsTableMsg tempmsg = (NeighborsTableMsg)message;
-		try {
-			Connection con = null;
-			PreparedStatement pst = null;
+			Connection con;
+			PreparedStatement pst;
 
 			String url = "jdbc:mysql://localhost/wsn_lab";
 			String user = "root";
 			String password = "";
-			con = DriverManager.getConnection(url, user, password);
+			con = (Connection) DriverManager.getConnection(url, user, password);
 			String n = Integer.toString(tempmsg.get_Neighbors());
 			for (int i=0 ; i<n.length() ; i++){
 				char destChar = n.charAt(i);
 				int destInt = Character.getNumericValue(destChar);
-				pst = con.prepareStatement("INSERT INTO neighbor(GroupID,SourceID,DestID) VALUES(1,2,"+destInt+")");
+				pst = (PreparedStatement) con.prepareStatement("INSERT INTO neighbor(GroupID,SourceID,DestID) VALUES(1,2,"+destInt+")");
 				pst.executeUpdate();
 			}
 
@@ -90,165 +84,39 @@ public class NeighborsTable extends javax.swing.JFrame implements MessageListene
 		catch (SQLException ex) {
 		    //Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
 		}
-	}
+  }
+  
+  private static void usage() {
+    System.err.println("usage: NeighborsTable [-comm <source>]");
+  }
+  
+  public static void main(String[] args) throws Exception {
+    String source = null;
+    if (args.length == 2) {
+      if (!args[0].equals("-comm")) {
+	usage();
+	System.exit(1);
+      }
+      source = args[1];
+    }
+    else if (args.length != 0) {
+      usage();
+      System.exit(1);
+    }
+    
+    PhoenixSource phoenix;
+    
+    if (source == null) {
+      phoenix = BuildSource.makePhoenix(PrintStreamMessenger.err);
+    }
+    else {
+      phoenix = BuildSource.makePhoenix(source, PrintStreamMessenger.err);
+    }
 
-	private static void usage() {
-		System.err.println("usage: NeighborsTable [-comm <source>]");
-	}
-	//******************************************************************
+    MoteIF mif = new MoteIF(phoenix);
+    NeighborsTable serial = new NeighborsTable(mif);
+    serial.sendPackets();
+  }
 
-	/** This method is called from within the constructor to
-	* initialize the form.
-	* WARNING: Do NOT modify this code. The content of this method is
-	* always regenerated by the Form Editor.
-	*/
-	@SuppressWarnings("unchecked")
-	// <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-	private void initComponents() {
-
-		moteIF.registerListener(new NeighborsTableMsg(), this);
-
-		jLabel1 = new javax.swing.JLabel();
-		jComboBox_NodeID = new javax.swing.JComboBox();
-		jScrollPane1 = new javax.swing.JScrollPane();
-		jTable2 = new javax.swing.JTable();
-		btntemp = new javax.swing.JButton();
-
-		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-		jLabel1.setText("Insert the destination NodeID : ");
-
-		jComboBox_NodeID.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
-
-		jTable2.setModel(new javax.swing.table.DefaultTableModel(
-		new Object [][] {
-			{ new Integer(0),  new Integer(0)},
-			{ new Integer(1),  new Integer(0)},
-			{ new Integer(2),  new Integer(0)},
-			{ new Integer(3),  new Integer(0)},
-			{ new Integer(4),  new Integer(0)},
-			{ new Integer(5),  new Integer(0)},
-			{ new Integer(6),  new Integer(0)},
-			{ new Integer(7),  new Integer(0)},
-			{ new Integer(8),  new Integer(0)},
-			{ new Integer(9),  new Integer(0)}
-		},
-		new String [] {
-			"Node ID", "Temperature"
-		}
-		) {
-			Class[] types = new Class [] {
-				java.lang.Integer.class, java.lang.Integer.class
-			};
-			boolean[] canEdit = new boolean [] {
-				false, false
-			};
-
-			public Class getColumnClass(int columnIndex) {
-				return types [columnIndex];
-			}
-
-			public boolean isCellEditable(int rowIndex, int columnIndex) {
-				return canEdit [columnIndex];
-			}
-		});
-		jScrollPane1.setViewportView(jTable2);
-
-		btntemp.setText("Get Temperature");
-		btntemp.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				btntempMouseClicked(evt);
-			}
-		});
-
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(
-		layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-		.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-		.addContainerGap()
-		.addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-		.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-		.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-		.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-		.addComponent(jLabel1)
-		.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-		.addComponent(jComboBox_NodeID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-		.addComponent(btntemp, javax.swing.GroupLayout.Alignment.TRAILING))
-		.addContainerGap())
-		);
-		layout.setVerticalGroup(
-		layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-		.addGroup(layout.createSequentialGroup()
-		.addContainerGap()
-		.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-		.addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-		.addGroup(layout.createSequentialGroup()
-		.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-		.addComponent(jLabel1)
-		.addComponent(jComboBox_NodeID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-		.addGap(18, 18, 18)
-		.addComponent(btntemp)))
-		.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-
-		pack();
-	}// </editor-fold>//GEN-END:initComponents
-
-	private void btntempMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btntempMouseClicked
-		// TODO add your handling code here:
-		int DestID;
-		DestID=jComboBox_NodeID.getSelectedIndex();
-		this.sendTempCommand(DestID);
-	}//GEN-LAST:event_btntempMouseClicked
-
-
-	/**
-	* @param args the command line arguments
-	*/
-	public static void main(String args[]) {
-		
-		//**************************************************************
-		String source = null;
-		if (args.length == 2) {
-			if (!args[0].equals("-comm")) {
-				usage();
-				System.exit(1);
-			}
-			source = args[1];
-		}
-		else if (args.length != 0) {
-			usage();
-			System.exit(1);
-		}
-
-		PhoenixSource phoenix;
-
-		if (source == null) {
-			phoenix = BuildSource.makePhoenix(PrintStreamMessenger.err);
-		}
-		else {
-			phoenix = BuildSource.makePhoenix(source, PrintStreamMessenger.err);
-		}
-
-		MoteIF mif = new MoteIF(phoenix);
-		NeighborsTable.moteIF=mif;
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new NeighborsTable().setVisible(true);
-			}
-		});
-		//Task3 serial = new Task3(mif);
-		//serial.sendPackets();
-		//******************************************************************
-	}
-
-	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private javax.swing.JButton btntemp;
-	private javax.swing.JComboBox jComboBox_NodeID;
-	private javax.swing.JLabel jLabel1;
-	private javax.swing.JScrollPane jScrollPane1;
-	private javax.swing.JTable jTable2;
-	// End of variables declaration//GEN-END:variables
 
 }

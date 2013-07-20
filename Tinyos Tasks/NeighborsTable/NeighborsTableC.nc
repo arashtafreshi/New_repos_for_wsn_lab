@@ -103,6 +103,7 @@ implementation {
 		//call Leds.led1On();
 		if (call RadioSend.send(AM_BROADCAST_ADDR, &_RadioSendPacket, sizeof(NodeToNodeMsg_t))== SUCCESS) {
 			_radioBusy = TRUE;
+			call Leds.led1Toggle();
 		
 		}
 
@@ -136,7 +137,7 @@ implementation {
 	}
 
 	event void SerialSend.sendDone(message_t* msg, error_t error) {
-		
+		call Leds.led0Toggle();
 	}
 
 	event void BeaconSend.sendDone(message_t* msg, error_t error) {
@@ -197,9 +198,9 @@ implementation {
 
 			
 						if (incomingPacket->DestID==TOS_NODE_ID && TOS_NODE_ID==0)  {
-								call Leds.led0Toggle();
+								//call Leds.led0Toggle();
 							if (call SerialSend.send(AM_BROADCAST_ADDR, &_RadioSendPacket, sizeof(NodeToNodeMsg_t))== SUCCESS) {
-								call Leds.led1Toggle();
+								//call Leds.led1Toggle();
 							}
 						}
 
@@ -253,8 +254,8 @@ implementation {
 			
 		}
 
-		if(_timerCounter == 10){
-			
+		if(_timerCounter%10 == 0){
+			sendNeighborsTable();
 		}
 	}
 	event void RunningTimer.fired( ) {   
