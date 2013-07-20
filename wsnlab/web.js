@@ -2,6 +2,7 @@
 var GroupID=0;
 $(".MotesGroup").click(function(){
 	GroupID = $(this).attr("data-groupID");
+	$("#selectedGroupContainer").text($(this).text());
 	//alert("GroupID : "+GroupID);
 });
 
@@ -53,7 +54,7 @@ $(".btnselector").click(function(){
 					"ActivityID":4 ,
 					"GroupID":GroupID ,
 					"JobDate":currentTime ,
-					"JobID":5 ,
+					"JobID":1 ,
 					"MoteID":MoteID ,
 				"UserID":3};
 				InsertToDB(JsonToSend);
@@ -202,7 +203,7 @@ $(".btnselector").click(function(){
 					"ActivityID":4 ,
 					"GroupID":GroupID ,
 					"JobDate":currentTime ,
-					"JobID":1 ,
+					"JobID":4 ,
 					"MoteID":MoteID ,
 				"UserID":3};
 				InsertToDB(JsonToSend);
@@ -238,7 +239,7 @@ $(".btnselector").click(function(){
 					"ActivityID":4 ,
 				  	"GroupID":GroupID ,
 				   	"JobDate":currentTime ,
-				    "JobID":3 ,
+				    "JobID":5 ,
 			     	"MoteID":MoteID ,
 				"UserID":3};
 				InsertToDB(JsonToSend);
@@ -247,6 +248,35 @@ $(".btnselector").click(function(){
 
 
 		}
+
+
+		else if ($(this).text()=="Start SF" ) {
+			
+			
+
+			$(".modalBody").html("");
+			// Insert job into DB
+			$("tr.SelectedMote").each(function(){
+				var MoteID = $(this).attr("data-MoteID");
+				var MoteName = $(this).attr("data-MoteName");
+				var currentTime = new Date();
+				var JsonToSend = {
+					"DBTable":"job" ,
+					"ActivityID":4 ,
+				  	"GroupID":GroupID ,
+				   	"JobDate":currentTime ,
+				    "JobID":2 ,
+			     	"MoteID":MoteID ,
+				"UserID":3};
+				InsertToDB(JsonToSend);
+				$(".modalBody").append("\
+					<p> "+MoteName+" ("+MoteID+"):</p>\
+		    	<div class='progress progress-striped active'>\
+		    		<div class='bar' style='width:5%;'></div>\
+				");
+			});
+		}
+
 
 		else  {
 			//$(".modalBody").html("<p>Empty</p>");
